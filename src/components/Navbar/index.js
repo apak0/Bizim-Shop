@@ -39,10 +39,10 @@ function Navbar() {
 
   return (
     <nav className={styles.nav}>
-      <Box display={"flex"} mr={"auto"}>
-        <Box>
-          <NavLink to="/">
-            <Image
+      <Box display={"flex"} mr={"auto"} alignItems={"center"} className="">
+        <Box >
+          <NavLink  to="/">
+            <Image 
               borderRadius="full"
               height={"50px"}
               src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
@@ -59,7 +59,7 @@ function Navbar() {
           color={"white"}
         >
           <NavLink to="/">
-            <Text as="b" fontSize="4xl">
+            <Text as="b" className="sm:text-sm md:text-2xl">
               Bizim Shop
             </Text>
           </NavLink>
@@ -195,49 +195,51 @@ function Navbar() {
         </Box>
       </Box>
       {user && (
-        <Box className={styles.profilePhotoBoxOutside}>
-          <Menu>
-            <MenuButton>
-              <Image
-                alt="not found"
-                width={"40px"}
-                height={"40px"}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg3c17auGFTgUHE9FM8j99aPo-VSVD9q5HOA&usqp=CAU"
-                objectFit={"cover"}
-                className={styles.profilePhotoBoxInside}
-              />
-            </MenuButton>
+        <Box className="hidden md:block">
+          <Box id={styles.profilePhotoBoxOutside}>
+            <Menu>
+              <MenuButton>
+                <Image
+                  alt="not found"
+                  width={"40px"}
+                  height={"40px"}
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg3c17auGFTgUHE9FM8j99aPo-VSVD9q5HOA&usqp=CAU"
+                  objectFit={"cover"}
+                  className={styles.profilePhotoBoxInside}
+                />
+              </MenuButton>
 
-            {/* There is down sign but it has a problem, cant opacity 1 */}
-            {/* <Box className={styles.downButton}>
+              {/* There is down sign but it has a problem, cant opacity 1 */}
+              {/* <Box className={styles.downButton}>
                 <BsChevronDown />
               </Box> */}
 
-            <MenuList minW={0}>
-              <MenuItem as={"b"} color={"black"} mr={10}>
-                <NavLink to={"/profile"}>
-                  <span>Profile</span>
-                </NavLink>
-              </MenuItem>
-              <MenuItem as={"b"} color={"black"}>
-                <NavLink to={"/basket"}>
-                  <span>Basket</span>
-                </NavLink>
-              </MenuItem>
-              <MenuItem minH="40px">
-                <Box color={"red"}>
-                  <NavLink onClick={handleLogout} to="/">
-                    <Box display={"flex"} alignItems={"center"} gap={3}>
-                      <Text>Logout</Text>
-                      <BiLogOut />
-                    </Box>
+              <MenuList minW={0}>
+                <MenuItem as={"b"} color={"black"} mr={10}>
+                  <NavLink to={"/profile"}>
+                    <span>Profile</span>
                   </NavLink>
-                </Box>
-              </MenuItem>
-            </MenuList>
-          </Menu>
+                </MenuItem>
+                <MenuItem as={"b"} color={"black"}>
+                  <NavLink to={"/basket"}>
+                    <span>Basket</span>
+                  </NavLink>
+                </MenuItem>
+                <MenuItem minH="40px">
+                  <Box color={"red"}>
+                    <NavLink onClick={handleLogout} to="/">
+                      <Box display={"flex"} alignItems={"center"} gap={3}>
+                        <Text>Logout</Text>
+                        <BiLogOut />
+                      </Box>
+                    </NavLink>
+                  </Box>
+                </MenuItem>
+              </MenuList>
+            </Menu>
 
-          <NavLink to={"/profile"} className="nav-profile-name"></NavLink>
+            <NavLink to={"/profile"} className="nav-profile-name"></NavLink>
+          </Box>
         </Box>
       )}
     </nav>

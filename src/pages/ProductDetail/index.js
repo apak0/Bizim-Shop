@@ -50,8 +50,8 @@ function ProductDetail() {
   if (status === "error") return "An error has occurred: " + error.message;
 
   return (
-    <Box mx={20}>
-      <Grid px={20} pt={10} templateColumns="repeat(4, 3fr)" gap={10}>
+    <Box className="items-center justify-center min-h-screen container mx-auto" mx={20}>
+      <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" px={20} >
         {data.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.map((item) => (
@@ -61,7 +61,7 @@ function ProductDetail() {
             ))}
           </React.Fragment>
         ))}
-      </Grid>
+      </Box>
 
       <Flex mt="10" justifyContent="center">
         <Button

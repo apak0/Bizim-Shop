@@ -9,8 +9,8 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .navButtons:hover {
@@ -18,7 +18,7 @@
   transition-duration: 0.15s;
 }
 
-.profilePhotoBoxOutside {
+#profilePhotoBoxOutside {
   padding: 4px;
   position: relative;
   background: linear-gradient(to right, purple, red);
@@ -30,11 +30,11 @@
   align-items: center;
 }
 
-.profilePhotoBoxOutside:hover {
+#profilePhotoBoxOutside:hover {
   border-radius: 20%;
 }
 
-.profilePhotoBoxOutside:hover .profilePhotoBoxInside {
+#profilePhotoBoxOutside:hover .profilePhotoBoxInside {
   border-radius: 20%;
   transition: 0.3s;
 }
