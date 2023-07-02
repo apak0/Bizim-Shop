@@ -31,7 +31,10 @@ function Admin() {
               alignItems={"center"}
               color={"cyan.400"}
             >
+              <Box color={"red"}>
+
               <GrCaretPrevious className="back-icon" />
+              </Box>
               <Text>Back to Home</Text>
             </Box>
           </NavLink>

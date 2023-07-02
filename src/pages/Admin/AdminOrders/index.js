@@ -71,7 +71,7 @@ function AdminOrders() {
       </Flex>
 
       <Table variant="simple">
-        <Thead bg={"blue.500"}>
+        <Thead bg={"blue.200"}>
           <Tr >
             <Th fontSize={"14px"} p={5} color={"black"}>USERNAME</Th>
             <Th fontSize={"14px"} color={"black"}>E-MAIL</Th>
