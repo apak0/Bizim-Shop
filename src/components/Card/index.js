@@ -116,6 +116,7 @@ function Card({ item, inBasket }) {
                 fontWeight="bold"
                 as="samp"
                 lineHeight="tight"
+               
               >
                 {item.title}
               </Box>

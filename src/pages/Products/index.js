@@ -33,20 +33,20 @@ function Products() {
   if (status === "error") return "An error has occurred: " + error.message;
 
   return (
-    <Box mx={20} py={5}>
-      <Grid px={20} templateColumns="repeat(4, 1fr)" gap={6}>
+    <Box className=" items-center justify-center min-h-screen container mx-auto" py={5}>
+      <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" px={20} >
         {data.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.map((item) => {
               return (
-                <Box className="box" w={"100%"} rounded={"lg"} key={item._id}>
+                <Box className="box " w={"100%"} rounded={"lg"} key={item._id}>
                   <Card item={item} inBasket={false} />
                 </Box>
               );
             })}
           </React.Fragment>
         ))}
-      </Grid>
+      </Box>
 
       <Flex mt="10" justifyContent="center">
         <Button
