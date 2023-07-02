@@ -36,6 +36,7 @@
     "yup": "^1.1.1"
   },
   "scripts": {
+    "serve": "node server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

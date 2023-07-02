@@ -9,8 +9,7 @@
   
 
 }
-
-/*when counted up this animation is active */
+ 
 @keyframes slideUpPrev {
   0% {
     transform: translateY(0);
@@ -31,9 +30,7 @@
     opacity: 1;
   }
 }
-
-/* when counted down this animation is active */
-
+ 
 .quantityCounterDownNext {
   animation: slideDownNext 1s ease-out forwards;
 }
