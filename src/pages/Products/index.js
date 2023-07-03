@@ -34,7 +34,7 @@ function Products() {
 
   return (
     <Box className=" items-center justify-center min-h-screen container mx-auto" py={5}>
-      <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" px={20} >
+      <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 " px={20} >
         {data.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.map((item) => {

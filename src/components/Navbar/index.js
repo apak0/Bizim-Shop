@@ -59,7 +59,7 @@ function Navbar() {
           color={"white"}
         >
           <NavLink to="/">
-            <Text as="b" className="sm:text-sm md:text-2xl">
+            <Text  className="sm:text-sm text-2xl">
               Bizim Shop
             </Text>
           </NavLink>

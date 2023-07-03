@@ -50,33 +50,107 @@ function ProductDetail() {
   if (status === "error") return "An error has occurred: " + error.message;
 
   return (
-    <Box className="items-center justify-center min-h-screen container mx-auto" mx={20}>
-      <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" px={20} >
-        {data.pages.map((group, i) => (
-          <React.Fragment key={i}>
-            {group.map((item) => (
-              <Box className="box" rounded={"lg"} w="100%" key={item._id}>
-                <Card item={item} />
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      p="3"
+      height={"100%"}
+      width={"100%"}
+      minW={"230px"}
+    >
+      <Box flex={1}>
+        <Link to={`/product/${item._id}`}>
+          <Box borderBottom={"1px"} borderColor="gray.600">
+            <Image
+              src={item.photos[0]}
+              alt="product"
+              loading="lazy"
+              w={"100%"}
+              h={"200px"}
+              objectFit={"cover"}
+            />
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+            >
+              <Box
+                fontSize={"2xl"}
+                fontWeight="bold"
+                as="samp"
+                lineHeight="tight"
+               
+              >
+                {item.title}
               </Box>
-            ))}
-          </React.Fragment>
-        ))}
+
+              <Box fontSize={"m"}>
+                {moment(item.createdAt).format("DD/MM/YYYY")}
+              </Box>
+            </Box>
+          </Box>
+
+          <LinesEllipsis
+            text={item.description}
+            onReflow={handleReflow}
+            maxLine={4}
+          />
+        </Link>
+      </Box>
+      <Box display={"flex"} as="b" fontSize={"2xl"} color={"yellow.400"} mt={5}>
+        {item.price} TL{" "}
       </Box>
 
-      <Flex mt="10" justifyContent="center">
-        <Button
-          m={5}
-          onClick={() => fetchNextPage()}
-          isLoading={isFetchingNextPage}
-          disabled={!hasNextPage || isFetchingNextPage}
-        >
-          {isFetchingNextPage
-            ? "Loading more..."
-            : hasNextPage
-            ? "Load More"
-            : "Nothing more to load"}
-        </Button>
-      </Flex>
+      <Box
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        {inBasket ? ( // if item in basket change the button
+          <Button
+            colorScheme={"red"}
+            variant="solid"
+            px={1}
+            _hover={{ bg: "white", color: "red", border: "1px solid gray" }}
+            onClick={() => removeFromBasket(item._id)}
+          >
+            Remove
+          </Button>
+        ) : null}
+
+        {!inBasket ? (
+          <>
+            {!foundBasketItem ? (
+              <Button
+                colorScheme={"blue"}
+                variant="solid"
+                onClick={() => addToBasket(item, foundBasketItem)}
+                _hover={{
+                  bg: "white",
+                  color: "blue.400",
+                  border: "1px solid #4299E1",
+                }}
+              >
+                Add to Basket
+              </Button>
+            ) : (
+              <Button colorScheme={"blue"} variant="solid" isDisabled>
+                Already in Basket
+              </Button>
+            )}
+          </>
+        ) : null}
+
+
+        <Box>
+          <Badge ml="1" fontSize="0.8em" colorScheme="green">
+            New
+          </Badge>
+        </Box>
+      </Box>
     </Box>
   );
 }
