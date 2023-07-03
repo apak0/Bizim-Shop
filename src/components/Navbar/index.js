@@ -57,9 +57,10 @@ function Navbar() {
           alignItems={"center"}
           ml={5}
           color={"white"}
+          
         >
           <NavLink to="/">
-            <Text  className="sm:text-sm text-2xl">
+            <Text  className="text-orange-400">
               Bizim Shop
             </Text>
           </NavLink>

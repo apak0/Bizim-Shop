@@ -1,157 +1,57 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { fetchProduct } from "../../api";
-import {
-  Text,
-  Button,
-  Badge,
-  Image,
-  Grid,
-  Box,
-  Flex,
-  defineStyleConfig,
-} from "@chakra-ui/react";
-import moment from "moment";
+import { Box, Button, Text } from "@chakra-ui/react";
 import ImageGallery from "react-image-gallery";
-import "./styles.css";
-
 import { useBasket } from "../../contexts/BasketContext";
-import LinesEllipsis from "react-lines-ellipsis";
-
-import Card from "../../components/Card";
-import { useInfiniteQuery } from "react-query";
-
-import { fetchProductList } from "../../api";
 
 function ProductDetail() {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery("products", fetchProductList, {
-    getNextPageParam: (lastGroup, allGroups) => {
-      const morePagesExist = lastGroup?.length === 12;
+  const { id } = useParams(); //APIdan gelecek id.
+  const { addToBasket, basketItems } = useBasket();
+  const { isLoading, isError, data } = useQuery(["product", id], () =>
+    //product key birden fazla olabileceği için id ile ayrıştırıyoruz.
+    fetchProduct(id)
+  );
 
-      if (!morePagesExist) {
-        return;
-      }
+  if (isLoading) return "Loading...";
+  if (isError) return "An error has occurred: " + isError.message;
 
-      return allGroups.lenght + 1;
-    },
-  });
+  const findBasketItems = basketItems.find((item) => item.id === data[0].id);
+  const images = data[0].image.map((url) => ({ original: url }));
+
   console.log(data);
 
-  if (status === "loading") return "Loading...";
-
-  if (status === "error") return "An error has occurred: " + error.message;
-
   return (
-    <Box
-      display={"flex"}
-      flexDirection={"column"}
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      p="3"
-      height={"100%"}
-      width={"100%"}
-      minW={"230px"}
-    >
-      <Box flex={1}>
-        <Link to={`/product/${item._id}`}>
-          <Box borderBottom={"1px"} borderColor="gray.600">
-            <Image
-              src={item.photos[0]}
-              alt="product"
-              loading="lazy"
-              w={"100%"}
-              h={"200px"}
-              objectFit={"cover"}
-            />
-            <Box
-              display={"flex"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-            >
-              <Box
-                fontSize={"2xl"}
-                fontWeight="bold"
-                as="samp"
-                lineHeight="tight"
-               
-              >
-                {item.title}
-              </Box>
+    <div>
+      <Text as="h2" fontSize="2xl">
+        {data[0].title}
+      </Text>
 
-              <Box fontSize={"m"}>
-                {moment(item.createdAt).format("DD/MM/YYYY")}
-              </Box>
-            </Box>
-          </Box>
+      {/* <Text>{moment(data[0].createdAt).format("DD/MM/YYYY")}</Text> */}
 
-          <LinesEllipsis
-            text={item.description}
-            onReflow={handleReflow}
-            maxLine={4}
-          />
-        </Link>
-      </Box>
-      <Box display={"flex"} as="b" fontSize={"2xl"} color={"yellow.400"} mt={5}>
-        {item.price} TL{" "}
-      </Box>
+      <p>
+        {data[0].description} - {data[0].price}$
+      </p>
 
-      <Box
-        display={"flex"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
+      {/* butona tıklayınca sepete ekleyecek, data API'dan gelen data. */}
+      <Button
+        backgroundColor={findBasketItems ? "#c0b9dd" : "#84A59D"}
+        color="white"
+        mt="1"
+        onClick={() => addToBasket(data[0], findBasketItems)}
       >
-        {inBasket ? ( // if item in basket change the button
-          <Button
-            colorScheme={"red"}
-            variant="solid"
-            px={1}
-            _hover={{ bg: "white", color: "red", border: "1px solid gray" }}
-            onClick={() => removeFromBasket(item._id)}
-          >
-            Remove
-          </Button>
-        ) : null}
+        {findBasketItems ? "Sepetten kaldır" : "Sepete Ekle"}
+      </Button>
 
-        {!inBasket ? (
-          <>
-            {!foundBasketItem ? (
-              <Button
-                colorScheme={"blue"}
-                variant="solid"
-                onClick={() => addToBasket(item, foundBasketItem)}
-                _hover={{
-                  bg: "white",
-                  color: "blue.400",
-                  border: "1px solid #4299E1",
-                }}
-              >
-                Add to Basket
-              </Button>
-            ) : (
-              <Button colorScheme={"blue"} variant="solid" isDisabled>
-                Already in Basket
-              </Button>
-            )}
-          </>
-        ) : null}
-
-
-        <Box>
-          <Badge ml="1" fontSize="0.8em" colorScheme="green">
-            New
-          </Badge>
-        </Box>
+      <Box margin="10">
+        <ImageGallery
+          items={images}
+          showFullscreenButton={false}
+          useBrowserFullscreen={false}
+          autoPlay={false}
+        />
       </Box>
-    </Box>
+    </div>
   );
 }
 
