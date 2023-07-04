@@ -51,7 +51,7 @@ function Profile() {
       justifyContent={"center"}
       alignItems={"center"}
       mt={5}
-      ml={"60%"}
+      
     >
       <div className="profileTopDiv">
         <Card bg={"rgb(154, 198, 199, 0.4)"}>
