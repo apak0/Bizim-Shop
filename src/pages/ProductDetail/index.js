@@ -1,57 +1,53 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { fetchProduct } from "../../api";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Text, Button } from "@chakra-ui/react";
 import ImageGallery from "react-image-gallery";
+import moment from "moment";
 import { useBasket } from "../../contexts/BasketContext";
 
 function ProductDetail() {
-  const { id } = useParams(); //APIdan gelecek id.
-  const { addToBasket, basketItems } = useBasket();
-  const { isLoading, isError, data } = useQuery(["product", id], () =>
-    //product key birden fazla olabileceği için id ile ayrıştırıyoruz.
-    fetchProduct(id)
+  const { product_id } = useParams();
+  const { addToBasket, items } = useBasket();
+
+  const { isLoading, error, data } = useQuery(["products", product_id], () =>
+    fetchProduct(product_id)
   );
-
   if (isLoading) return "Loading...";
-  if (isError) return "An error has occurred: " + isError.message;
 
-  const findBasketItems = basketItems.find((item) => item.id === data[0].id);
-  const images = data[0].image.map((url) => ({ original: url }));
+  if (error) return "An error has occurred: " + error.message;
 
-  console.log(data);
+  const findBasketItem = items.find((item) => item._id === product_id);
+  const images = data.photos.map((url) => ({ original: url }));
 
   return (
-    <div>
-      <Text as="h2" fontSize="2xl">
-        {data[0].title}
-      </Text>
-
-      {/* <Text>{moment(data[0].createdAt).format("DD/MM/YYYY")}</Text> */}
-
-      <p>
-        {data[0].description} - {data[0].price}$
-      </p>
-
-      {/* butona tıklayınca sepete ekleyecek, data API'dan gelen data. */}
-      <Button
-        backgroundColor={findBasketItems ? "#c0b9dd" : "#84A59D"}
-        color="white"
-        mt="1"
-        onClick={() => addToBasket(data[0], findBasketItems)}
-      >
-        {findBasketItems ? "Sepetten kaldır" : "Sepete Ekle"}
-      </Button>
-
-      <Box margin="10">
-        <ImageGallery
-          items={images}
-          showFullscreenButton={false}
-          useBrowserFullscreen={false}
-          autoPlay={false}
-        />
+    <Box>
+      <Box className="d-flex justify-center ">
+        <Box>
+          <Text as="h2" fontSize="2xl">
+            {data.title}
+          </Text>
+        </Box>
+        <Box>
+          <Text>{moment(data.createdAt).format("DD/MM/YYYY")}</Text>
+        </Box>
       </Box>
-    </div>
+
+      <Box>
+        <p>{data.description}</p>
+      </Box>
+      <Box margin="10">
+        <ImageGallery items={images} showThumbnails={false} />
+      </Box>
+      <Box className="mx-5" mx={"auto"}>
+        <Button
+          colorScheme={findBasketItem ? "green" : "pink"}
+          onClick={() => addToBasket(data, findBasketItem)}
+        >
+          {findBasketItem ? "Remove from basket" : "Add to Basket"}
+        </Button>
+      </Box>
+    </Box>
   );
 }
 
