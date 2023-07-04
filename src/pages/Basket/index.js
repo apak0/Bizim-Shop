@@ -82,7 +82,7 @@ function Basket() {
   };
 
   return (
-    <Box>
+    <Box >
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         {items.length < 1 && (
           <Box mt={20}>
@@ -109,19 +109,19 @@ function Basket() {
       </Box>
 
       {items.length > 0 && (
-        <Box display={"flex"} justifyContent={"space-between"} py={5} backgroundPosition="center">
-          <Grid templateColumns="repeat(3, 1fr)" gap={6} px={20}>
+        <Box  py={5} backgroundPosition="center" className="items-center justify-center min-h-screen container sm:mx-0 mx-auto" >
+          <Box className=" m-60 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {items.map((item, i) => (
-              <GridItem key={i}>
-                <Box className="box" rounded={"lg"} w="100%">
+              <Box key={i} >
+                <Box className="box m-55" rounded={"lg"} w="100%">
                   <Card item={item} inBasket={true} />
                 </Box>
-              </GridItem>
+              </Box>
             ))}
-          </Grid>
+          </Box>
 
           {/* Order Price Information */}
-          <Box mx={10} display={"flex"} flexDirection={"column"}>
+          <Box  display={"flex"} flexDirection={"column"}>
             <Box
               border="2px"
               borderColor="gray.300"
@@ -132,14 +132,16 @@ function Basket() {
               flexDirection={"column"}
               mt={10}
               p={2}
+              mx={"auto"}
             >
               <Box
                 display={"flex"}
                 justifyContent={"space-between"}
                 alignItems={"center"}
+                
               >
-                <Text color={"orange.400"} fontSize="m">
-                  Total Product
+                <Text mr={5} color={"orange.400"} fontSize="m">
+                  Total Product:
                 </Text>
                 <Text ml={1} color={"Pink 900"} fontSize as={"b"}>
                   {total}
@@ -155,7 +157,7 @@ function Basket() {
                 borderColor="gray.200"
               >
                 <Text color={"orange.400"} fontSize="m">
-                  Delivery Fee
+                  Delivery Fee:
                 </Text>
                 <Text color={"Pink 900"} fontSize="m" ml={1} as={"b"}>
                   0
@@ -176,6 +178,7 @@ function Basket() {
               size="sm"
               bg={"orange.400"}
               color={"gray.100"}
+              mx={"auto"}
               onClick={() => {
                 loggedIn ? onOpen() : handleNavigate();
               }}
