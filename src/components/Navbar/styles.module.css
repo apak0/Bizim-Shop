@@ -13,6 +13,12 @@
   padding-right: 6.25rem;
 }
 
+@media screen and (max-width: 480px) {
+  .nav {
+    padding-left: 0px;
+  }
+}
+
 .navButtons:hover {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
   transition-duration: 0.15s;

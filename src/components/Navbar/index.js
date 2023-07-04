@@ -38,13 +38,15 @@ function Navbar() {
   };
 
   return (
-    <nav className={styles.nav}>
+    <Box className={styles.nav} >
       <Box display={"flex"} mr={"auto"} alignItems={"center"} className="">
-        <Box >
+        <Box className="" >
           <NavLink  to="/">
             <Image 
+            
               borderRadius="full"
               height={"50px"}
+              minW={"88px"}
               src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
               alt="Dan Abramov"
             />
@@ -243,7 +245,7 @@ function Navbar() {
           </Box>
         </Box>
       )}
-    </nav>
+    </Box>
   );
 }
 

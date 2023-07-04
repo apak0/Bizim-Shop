@@ -90,10 +90,8 @@ function Card({ item, inBasket }) {
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
-      p="3"
-      height={"100%"}
-      width={"100%"}
-      minW={"230px"}
+      p="5"
+      
     >
       <Box flex={1}>
         <Link to={`/product/${item._id}`}>
@@ -109,7 +107,7 @@ function Card({ item, inBasket }) {
             <Box
               display={"flex"}
               justifyContent={"space-between"}
-              alignItems={"center"}
+              
             >
               <Box
                 fontSize={"2xl"}
@@ -121,7 +119,7 @@ function Card({ item, inBasket }) {
                 {item.title}
               </Box>
 
-              <Box fontSize={"m"}>
+              <Box fontSize={"m"} >
                 {moment(item.createdAt).format("DD/MM/YYYY")}
               </Box>
             </Box>
