@@ -62,7 +62,7 @@ function Navbar() {
           
         >
           <NavLink to="/">
-            <Text  className="text-orange-400">
+            <Text  className=" " fontWeight={"bold"} fontSize={"xx-large"} >
               Bizim Shop
             </Text>
           </NavLink>

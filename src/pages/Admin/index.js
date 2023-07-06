@@ -9,7 +9,7 @@ import { useAuth } from "../../contexts/AuthContext";
 function Admin() {
   const { user } = useAuth();
   return (
-    <Box>
+    <Box className="topBox">
       {user?.role !== "admin" && <Navigate to={"/"} replace={true} />}
       <Box mx={10}>
         <Box borderBottom={"2px"} borderColor={"#8d8d8d"}>
