@@ -2,7 +2,7 @@
   background-color: #333;
   color: white;
   padding: 0.7rem;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,8 +11,7 @@
   z-index: 2;
   padding-left: 6.25rem;
   padding-right: 6.25rem;
-  font-family: 'Chakra Petch', sans-serif;
-
+  font-family: "Chakra Petch", sans-serif;
 }
 
 @media screen and (max-width: 480px) {

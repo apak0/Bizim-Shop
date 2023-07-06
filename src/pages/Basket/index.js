@@ -31,6 +31,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { SlBasket } from "react-icons/sl";
 import { calcLength } from "framer-motion";
+import "./styles.css";
 
 function Basket() {
   const [fullName, setFullName] = useState("");
@@ -82,7 +83,7 @@ function Basket() {
   };
 
   return (
-    <Box >
+    <Box className="basketTopDiv">
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         {items.length < 1 && (
           <Box mt={20}>
@@ -109,10 +110,15 @@ function Basket() {
       </Box>
 
       {items.length > 0 && (
-        <Box  py={5} backgroundPosition="center" className="items-center justify-center min-h-screen container sm:mx-0 mx-auto" >
-          <Box className=" m-60 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <Box
+          mx={"10%"}
+          py={5}
+          backgroundPosition="center"
+          className=" totalDiv block  items-center justify-center sm:mx-0"
+        >
+          <Box className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-sm  ">
             {items.map((item, i) => (
-              <Box key={i} >
+              <Box key={i}>
                 <Box className="box m-55" rounded={"lg"} w="100%">
                   <Card item={item} inBasket={true} />
                 </Box>
@@ -121,7 +127,13 @@ function Basket() {
           </Box>
 
           {/* Order Price Information */}
-          <Box  display={"flex"} flexDirection={"column"}>
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            alignSelf={"baseline"}
+            ml={"10%"}
+            mr={"10%"}
+          >
             <Box
               border="2px"
               borderColor="gray.300"
@@ -138,7 +150,6 @@ function Basket() {
                 display={"flex"}
                 justifyContent={"space-between"}
                 alignItems={"center"}
-                
               >
                 <Text mr={5} color={"orange.400"} fontSize="m">
                   Total Product:
