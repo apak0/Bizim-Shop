@@ -38,12 +38,11 @@ function Navbar() {
   };
 
   return (
-    <Box className={styles.nav} >
+    <Box className={styles.nav}>
       <Box display={"flex"} mr={"auto"} alignItems={"center"} className="">
-        <Box className="" >
-          <NavLink  to="/">
-            <Image 
-            
+        <Box className="">
+          <NavLink to="/">
+            <Image
               borderRadius="full"
               height={"50px"}
               minW={"88px"}
@@ -57,12 +56,15 @@ function Navbar() {
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
-          ml={5}
+          ml={[0, 4, 6, 8]}
           color={"white"}
-          
         >
           <NavLink to="/">
-            <Text  className=" " fontWeight={"bold"} fontSize={"xx-large"} >
+            <Text
+              className=" "
+              fontWeight={"bold"}
+              fontSize={{ base: "15px", md: "40px", lg: 'xx-large' }}
+            >
               Bizim Shop
             </Text>
           </NavLink>
@@ -121,7 +123,7 @@ function Navbar() {
                     </NavLink>
                   )}
                 </ListItem>
-                <ListItem>
+                <ListItem className="">
                   <NavLink
                     style={({ isActive, isPending }) => {
                       return {
@@ -140,61 +142,66 @@ function Navbar() {
           </Box>
         )}
 
-        <Box ml={5}>
-          <NavLink
-            style={({ isActive, isPending }) => {
-              return {
-                color: isActive ? "MediumAquamarine" : "white",
-                borderBottom: isActive ? "solid" : "",
-              };
-            }}
-            to="/basket"
-          >
-            Basket{" "}
-            <Box display={"inline-block"}>
-              <Box
-                _hover={{
-                  color: "blue",
-                }}
-                display={"flex"}
-                alignItems={"center"}
-              >
-                {items.length < 1 ? (
+        <Box ml={5} display={"flex"}>
+          <Box>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "MediumAquamarine" : "white",
+                  borderBottom: isActive ? "solid" : "",
+                };
+              }}
+              to="/basket"
+            >
+              Basket{" "}
+            </NavLink>
+          </Box>
+
+
+          <Box display={""} as="button" to="/basket">
+            <Box
+              _hover={{
+                color: "blue",
+              }}
+              display={"flex"}
+              alignItems={"center"}
+            >
+              {items.length < 1 ? (
+                <Box>
+                  <SlBasket
+                    style={{
+                      color: "white",
+                      height: 20,
+                      width: 20,
+                    }}
+                  />{" "}
+                </Box>
+              ) : (
+                <Box display={"flex"}>
+                  {" "}
+                  <SlBasketLoaded
+                    style={{
+                      color: "#FFC23C",
+                      height: 20,
+                      width: 20,
+                    }}
+                    to={"/basket"}
+                  />
                   <Box>
-                    <SlBasket
-                      style={{
-                        color: "white",
-                        height: 20,
-                        width: 20,
-                      }}
-                    />{" "}
+                    <Badge
+                      position={"absolute"}
+                      height={"1rem"}
+                      rounded={"full"}
+                      bg={"red"}
+                      color={"white"}
+                    >
+                      {!items.length < 1 && `${items.length}`}
+                    </Badge>
                   </Box>
-                ) : (
-                  <Box display={"flex"}>
-                    {" "}
-                    <SlBasketLoaded
-                      style={{
-                        color: "#FFC23C",
-                        height: 20,
-                        width: 20,
-                      }}
-                    />
-                    <Box>
-                      <Badge
-                        position={"absolute"}
-                        height={"1rem"}
-                        rounded={"full"}
-                        bg={"red"}
-                        color={"white"}
-                      >
-                        {!items.length < 1 && `${items.length}`}
-                      </Badge>
-                    </Box>
-                  </Box>
-                )}
-              </Box>
+                </Box>
+              )}
             </Box>
-          </NavLink>
+          </Box>
         </Box>
       </Box>
       {user && (
