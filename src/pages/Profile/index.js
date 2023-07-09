@@ -15,6 +15,7 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./styles.css";
 
 function Profile() {
@@ -43,17 +44,18 @@ function Profile() {
       .catch((err) => console.log(err));
   };
 
- 
-
   return (
     <Box
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
       mt={5}
-      
     >
-      <div className="profileTopDiv">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="profileTopDiv"
+      >
         <Card bg={"rgb(154, 198, 199, 0.4)"}>
           <CardBody>
             <Flex
@@ -86,7 +88,7 @@ function Profile() {
                 <label htmlFor="files">N</label>
               )}
             </Flex>
-            <Flex h={50}  mx={"auto"} justifyContent={"center"}>
+            <Flex h={50} mx={"auto"} justifyContent={"center"}>
               {!selectedImage ? (
                 <Box>
                   <input
@@ -95,7 +97,6 @@ function Profile() {
                     hidden
                     name="myImage"
                     onChange={(event) => {
-                    
                       setSelectedImage(event.target.files[0]);
                     }}
                   />
@@ -151,7 +152,7 @@ function Profile() {
             </Stack>
           </CardBody>
           <Divider />
-          <CardFooter p={2} >
+          <CardFooter p={2}>
             <ButtonGroup spacing="2">
               <Button
                 _hover={{ bg: "red.200", color: "red.500" }}
@@ -165,7 +166,7 @@ function Profile() {
             </ButtonGroup>
           </CardFooter>
         </Card>
-      </div>
+      </motion.div>
     </Box>
   );
 }

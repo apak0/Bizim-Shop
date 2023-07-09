@@ -30,7 +30,7 @@ import Card from "../../components/Card";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { SlBasket } from "react-icons/sl";
-import { calcLength } from "framer-motion";
+import { motion } from "framer-motion";
 import "./styles.css";
 
 function Basket() {
@@ -83,7 +83,10 @@ function Basket() {
   };
 
   return (
-    <Box className="basketTopDiv">
+    <motion.Box
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+     className="basketTopDiv">
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         {items.length < 1 && (
           <Box mt={20}>
@@ -254,7 +257,7 @@ function Basket() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </Box>
+    </motion.Box>
   );
 }
 

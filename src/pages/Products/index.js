@@ -5,6 +5,8 @@ import { useInfiniteQuery } from "react-query";
 
 import { fetchProductList } from "../../api";
 
+import { motion } from "framer-motion";
+
 import "./style.css";
 import { useBasket } from "../../contexts/BasketContext";
 
@@ -33,12 +35,14 @@ function Products() {
   if (status === "error") return "An error has occurred: " + error.message;
 
   return (
-    <Box
-      className=" items-center justify-center min-h-screen container sm:mx-0  mx-auto "
+    <motion.Box
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className=" items-center justify-center min-h-screen container sm:mx-0  "
+      py={5}
       
-      py={5} 
     >
-      <Box className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" >
+      <Box className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {data.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.map((item) => {
@@ -66,7 +70,7 @@ function Products() {
             : "Nothing more to load"}
         </Button>
       </Flex>
-    </Box>
+    </motion.Box>
   );
 }
 

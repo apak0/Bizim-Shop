@@ -16,6 +16,7 @@ import { fetchRegister } from "../../../api";
 
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import {motion} from "framer-motion"
 
 function Signup() {
   const { login } = useAuth();
@@ -49,7 +50,9 @@ function Signup() {
   });
 console.log("formik errors:", formik.errors.general)
   return (
-    <div>
+    <motion.div
+    initial={{opacity:0}}
+    animate={{opacity:1}}>
       <Flex aling="center" width="full" justifyContent="center">
         <Box pt={10}>
           <Box textAlign="center">
@@ -116,7 +119,7 @@ console.log("formik errors:", formik.errors.general)
           </Box>
         </Box>
       </Flex>
-    </div>
+    </motion.div>
   );
 }
 

@@ -7,6 +7,7 @@ import { fetchProductList, deleteProduct } from "../../../api";
 import { Table, Popconfirm } from "antd";
 
 import { Text, Button, Flex, Box } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 import "./styles.css";
 
@@ -78,10 +79,8 @@ function AdminProducts() {
     return <div>Error {error.message}</div>;
   }
 
-
-
   return (
-    <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Flex
         justifyContent={"space-between"}
         alignItems={"center"}
@@ -115,8 +114,14 @@ function AdminProducts() {
         </Box>
       </Flex>
 
-      <Table strong={true} dataSource={data} columns={columns} rowKey="_id" _hover></Table>
-    </div>
+      <Table
+        strong={true}
+        dataSource={data}
+        columns={columns}
+        rowKey="_id"
+        _hover
+      ></Table>
+    </motion.div>
   );
 }
 

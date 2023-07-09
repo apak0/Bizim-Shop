@@ -5,13 +5,18 @@ import { Box, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import { GrCaretPrevious } from "react-icons/gr";
 
 import { useAuth } from "../../contexts/AuthContext";
+import { motion } from "framer-motion";
 
 function Admin() {
   const { user } = useAuth();
   return (
-    <Box className="topBox">
+    <motion.Box
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="topBox"
+    >
       {user?.role !== "admin" && <Navigate to={"/"} replace={true} />}
-      <Box mx={10}>
+      <Box mx={[0, 10, 10, 10]} >
         <Box borderBottom={"2px"} borderColor={"#8d8d8d"}>
           <NavLink
             to="/"
@@ -25,15 +30,14 @@ function Admin() {
             }}
           >
             <Box
-              position={"absolute"}
+              position={["static", "absolute", "absolute", "absolute"]}
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
               color={"cyan.400"}
             >
               <Box color={"red"}>
-
-              <GrCaretPrevious className="back-icon" />
+                <GrCaretPrevious className="back-icon" />
               </Box>
               <Text>Back to Home</Text>
             </Box>
@@ -44,7 +48,7 @@ function Admin() {
             styleType="none"
             display={"flex"}
             justifyContent={"center"}
-            gap={12}
+            gap={[8, 12, 12, 12]}
           >
             <ListItem>
               <NavLink
@@ -99,7 +103,7 @@ function Admin() {
           <Outlet />
         </Box>
       </Box>
-    </Box>
+    </motion.Box>
   );
 }
 

@@ -16,6 +16,7 @@ import { fetchLogin } from "../../../api";
 
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import {motion} from "framer-motion"
 
 function Signin() {
   const { login } = useAuth();
@@ -42,7 +43,10 @@ function Signin() {
   });
 
   return (
-    <div>
+    <motion.div
+    
+    initial={{opacity:0}}
+    animate={{opacity:1}}>
       <Flex aling="center" width="full" justifyContent="center">
         <Box pt={10}>
           <Box textAlign="center">
@@ -84,7 +88,7 @@ function Signin() {
           </Box>
         </Box>
       </Flex>
-    </div>
+    </motion.div>
   );
 }
 
