@@ -9,27 +9,6 @@ import "./styles.css";
 
 function Card({ item, inBasket }) {
   const { addToBasket, items, setItems } = useBasket();
-  // const [countUpEffect, setCountUpEffect] = useState("");
-  // const [updatedQuantity, setUpdatedQuantity] = useState(item.quantity);
-
-  // useEffect(() => {
-  //   setUpdatedQuantity(item.quantity);
-  // }, [updatedQuantity]);
-
-  // const handleCountUp = () => {
-  //   setCountUpEffect("quantityCounterUpPrev");
-
-  //   setTimeout(() => {
-  //     setCountUpEffect("quantityCounterUpNext");
-  //   }, 500); //after 300 ms change the className value and update updatedQuantity
-  //   console.log("items when Count Up:", items);
-  // };
-  // const handleDownCount = () => {
-  //   setCountUpEffect("quantityCounterDownPrev");
-  //   setTimeout(() => {
-  //     setCountUpEffect("quantityCounterDownNext");
-  //   }, 500); // after 300 ms change the className value and update updatedQuantity
-  // };
 
   const foundBasketItem = items.find(
     (basket_item) => basket_item._id === item._id
@@ -50,10 +29,6 @@ function Card({ item, inBasket }) {
             : item
         )
       );
-      // setTimeout(() => {
-      //   setUpdatedQuantity(newCount.quantity - 1); // 500 ms sonra updatedQuantity'yi güncelle
-      // }, 500);
-      // handleDownCount();
     }
   };
 
@@ -68,10 +43,6 @@ function Card({ item, inBasket }) {
             : item
         )
       );
-      // handleCountUp();
-      // setTimeout(() => {
-      //   setUpdatedQuantity(newCount.quantity + 1); // 500 ms sonra updatedQuantity'yi güncelle
-      // }, 500);
     }
   };
 
@@ -91,7 +62,6 @@ function Card({ item, inBasket }) {
       borderRadius="lg"
       overflow="hidden"
       p="5"
-      
     >
       <Box flex={1}>
         <Link to={`/product/${item._id}`}>
@@ -104,22 +74,17 @@ function Card({ item, inBasket }) {
               h={"200px"}
               objectFit={"cover"}
             />
-            <Box
-              display={"flex"}
-              justifyContent={"space-between"}
-              
-            >
+            <Box display={"flex"} justifyContent={"space-between"}>
               <Box
                 fontSize={"2xl"}
                 fontWeight="bold"
                 as="samp"
                 lineHeight="tight"
-               
               >
                 {item.title}
               </Box>
 
-              <Box fontSize={"m"} >
+              <Box fontSize={"m"}>
                 {moment(item.createdAt).format("DD/MM/YYYY")}
               </Box>
             </Box>
@@ -200,7 +165,6 @@ function Card({ item, inBasket }) {
               justifyContent={"center"}
               alignItems="center"
               w={"20px"}
-              
             >
               {item.quantity}
             </Text>

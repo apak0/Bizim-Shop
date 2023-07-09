@@ -25,7 +25,7 @@ function AdminOrders() {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Box display={"flex"} justifyContent={"center"} alignItems={"center"} fontSize={"3xl"} color={"cyan.400"} > Loading...</Box>;
   }
 
   if (isError) {
