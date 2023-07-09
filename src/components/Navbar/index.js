@@ -46,7 +46,7 @@ function Navbar() {
               borderRadius="full"
               height={"50px"}
               minW={"88px"}
-              src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png"
+              src="https://www.freepnglogos.com/uploads/eagle-png-logo/lakes-eagles-png-logo-14.png"
               alt="Dan Abramov"
             />
           </NavLink>
