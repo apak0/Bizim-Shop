@@ -33,7 +33,7 @@ function Admin() {
             <Box
               position={["static", "absolute", "absolute", "absolute"]}
               display={"flex"}
-              justifyContent={"center"}
+             
               alignItems={"center"}
               color={"cyan.400"}
             >

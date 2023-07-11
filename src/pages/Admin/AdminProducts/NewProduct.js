@@ -6,6 +6,7 @@ import { NavLink, Navigate } from "react-router-dom";
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   FormLabel,
   Input,
@@ -16,6 +17,7 @@ import { FieldArray, Formik } from "formik";
 import newProductScheme from "./validations";
 import { message } from "antd";
 import { BiLogOut } from "react-icons/bi";
+
 
 function NewProduct() {
   const queryClient = useQueryClient();
@@ -48,6 +50,9 @@ function NewProduct() {
 
   return (
     <div>
+      
+
+      
           <NavLink
             to="/admin/products"
             style={({ isActive, isPending }) => {
@@ -62,20 +67,52 @@ function NewProduct() {
             <Box
               position={["static", "absolute", "absolute", "absolute"]}
               display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
+             alignItems={"center"}
               color={"cyan.400"}
             >
-              <Box color={"red"}>
-                <BiLogOut  color="crimson"/>
+              <Box mr={1} >
+                <BiLogOut  color="purple"/>
                 
               </Box>
               <Text>Products</Text>
             </Box>
           </NavLink>
-      <Box textAlign={"center"} >
-        <Text color={"orange.300"} fontSize="2xl">New Product</Text>
-      </Box>
+         
+          <Flex
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        p={2}
+        bg={"#8d8d8d"}
+      >
+        <Box>{/* this is empty box */}</Box>
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          fontSize={"3xl"}
+          as="b"
+          color={"orange.300"}
+        >
+          <Text>Orders</Text>
+        </Box>
+
+        <Box>
+          {/* this box using for design, can not be active */}
+
+          <Button
+            opacity={0}
+            cursor={"context-menu"}
+            bg={"orange.300"}
+            shadow={"xl"}
+            _hover={{
+              color: "white",
+            }}
+          >
+            {" "}
+            New
+          </Button>
+        </Box>
+      </Flex>
       <Formik
         initialValues={{
           title: "Test",

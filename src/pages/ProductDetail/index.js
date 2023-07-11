@@ -5,7 +5,7 @@ import { Box, Text, Button } from "@chakra-ui/react";
 import ImageGallery from "react-image-gallery";
 import moment from "moment";
 import { useBasket } from "../../contexts/BasketContext";
-import {motion} from "framer-motion"
+import { m, motion } from "framer-motion";
 
 function ProductDetail() {
   const { product_id } = useParams();
@@ -22,11 +22,12 @@ function ProductDetail() {
   const images = data.photos.map((url) => ({ original: url }));
 
   return (
-    <motion.Box
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    >
-      <Box className="d-flex justify-center ">
+    <Box margin={"2rem"} >
+    <motion.Box initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <Box>
+
+     
+      <Box className="d-flex justify-center">
         <Box>
           <Text as="h2" fontSize="2xl">
             {data.title}
@@ -41,17 +42,19 @@ function ProductDetail() {
         <p>{data.description}</p>
       </Box>
       <Box margin="10">
-        <ImageGallery items={images} showThumbnails={false} />
+        <ImageGallery  showFullscreenButton={false} showPlayButton={false} items={images} showThumbnails={false} />
       </Box>
-      <Box className="mx-5" mx={"auto"}>
+      <Box className="mx-5" textAlign={"center"} mb={5}>
         <Button
           colorScheme={findBasketItem ? "green" : "pink"}
           onClick={() => addToBasket(data, findBasketItem)}
         >
-          {findBasketItem ? "Remove from basket" : "Add to Basket"}
+          {findBasketItem ? "Remove" : "Add to Basket"}
         </Button>
       </Box>
+       </Box>
     </motion.Box>
+    </Box>
   );
 }
 
