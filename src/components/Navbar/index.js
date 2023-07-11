@@ -57,7 +57,7 @@ function Navbar() {
           justifyContent={"center"}
           alignItems={"center"}
           ml={[0, 4, 6, 8]}
-          color={"white"}
+          color={"#AFD3E2"}
         >
           <NavLink to="/">
             <Text
@@ -105,7 +105,7 @@ function Navbar() {
         )}
 
         {localStorage.getItem("access-token") && (
-          <Box display={"flex"}>
+          <Box ml={{base: "15%", md:0}} >
             <Box display={"flex"} alignItems={"center"}>
               <UnorderedList display={"flex"} gap={5} styleType="none">
                 <ListItem>
