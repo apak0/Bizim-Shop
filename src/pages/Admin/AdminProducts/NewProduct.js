@@ -2,7 +2,7 @@ import React from "react";
 
 import { postProduct } from "../../../api";
 import { useMutation, useQueryClient } from "react-query";
-import { Navigate } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -15,6 +15,7 @@ import {
 import { FieldArray, Formik } from "formik";
 import newProductScheme from "./validations";
 import { message } from "antd";
+import { BiLogOut } from "react-icons/bi";
 
 function NewProduct() {
   const queryClient = useQueryClient();
@@ -47,7 +48,34 @@ function NewProduct() {
 
   return (
     <div>
-      <Text fontSize="2xl">New Product</Text>
+          <NavLink
+            to="/admin/products"
+            style={({ isActive, isPending }) => {
+              return {
+                color: isActive ? "MediumAquamarine" : "black",
+                borderBottom: isActive ? "solid" : "",
+                fontWeight: isActive ? "bold" : "bold",
+                fontSize: isActive ? "small" : "small",
+              };
+            }}
+          >
+            <Box
+              position={["static", "absolute", "absolute", "absolute"]}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
+              color={"cyan.400"}
+            >
+              <Box color={"red"}>
+                <BiLogOut  color="crimson"/>
+                
+              </Box>
+              <Text>Products</Text>
+            </Box>
+          </NavLink>
+      <Box textAlign={"center"} >
+        <Text color={"orange.300"} fontSize="2xl">New Product</Text>
+      </Box>
       <Formik
         initialValues={{
           title: "Test",
@@ -159,7 +187,9 @@ function NewProduct() {
                     width="full"
                     type="submit"
                     isLoading={isSubmitting}
-                    onClick={ () => {<Navigate to="products/new" />} }
+                    onClick={() => {
+                      <Navigate to="products/new" />;
+                    }}
                   >
                     Save
                   </Button>

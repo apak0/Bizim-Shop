@@ -6,6 +6,7 @@ import { GrCaretPrevious } from "react-icons/gr";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { motion } from "framer-motion";
+import { BiLogOut } from "react-icons/bi";
 
 function Admin() {
   const { user } = useAuth();
@@ -37,7 +38,8 @@ function Admin() {
               color={"cyan.400"}
             >
               <Box color={"red"}>
-                <GrCaretPrevious className="back-icon" />
+                <BiLogOut  color="crimson"/>
+                
               </Box>
               <Text>Back to Home</Text>
             </Box>
