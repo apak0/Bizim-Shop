@@ -89,11 +89,12 @@ function Basket() {
      className="basketTopDiv">
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         {items.length < 1 && (
-          <Box mt={20}>
+          <Box mt={20} >
             <Box
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            
             >
               <SlBasket
                 style={{
@@ -102,10 +103,10 @@ function Basket() {
                 }}
               />
             </Box>
-            <Box>
-              <Text fontSize={"6xl"}>Your Basket is Empty</Text>
-              <ChakraLink fontSize={"xl"} color="teal.500" to={"/"}>
-                Click for product page{" "}
+            <Box >
+              <Text textAlign={"center"} fontSize={{ base: "3xl", md: "6xl" }}>Your Basket is Empty</Text>
+              <ChakraLink fontSize={"xl"} color="teal.500" href={"/"}>
+                Click to product page{" "}
               </ChakraLink>
             </Box>
           </Box>
