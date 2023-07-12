@@ -146,7 +146,7 @@ function Navbar() {
           </Box>
         )}
 
-        <Box ml={5} display={"flex"}>
+        <Box ml={3} display={"flex"}>
           <Box>
             <NavLink
               style={({ isActive, isPending }) => {
