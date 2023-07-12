@@ -57,13 +57,17 @@ function Navbar() {
           justifyContent={"center"}
           alignItems={"center"}
           ml={[0, 4, 6, 8]}
-          color={"#AFD3E2"}
+          
+          
+         
         >
           <NavLink to="/">
             <Text
-              className=" "
+              
+              bgGradient='linear(to-l, #2E8A99, #AFD3E2)'
+              bgClip='text'
               fontWeight={"bold"}
-              fontSize={{ base: "15px", md: "40px", lg: 'xx-large' }}
+              fontSize={{ base: "15px", md: "40px", lg: "xx-large" }}
             >
               Bizim Shop
             </Text>
@@ -105,7 +109,7 @@ function Navbar() {
         )}
 
         {localStorage.getItem("access-token") && (
-          <Box ml={{base: "15%", md:0}} >
+          <Box ml={{ base: "15%", md: 0 }}>
             <Box display={"flex"} alignItems={"center"}>
               <UnorderedList display={"flex"} gap={5} styleType="none">
                 <ListItem>
@@ -156,7 +160,6 @@ function Navbar() {
               Basket{" "}
             </NavLink>
           </Box>
-
 
           <Box display={""} as="button" to="/basket">
             <Box
@@ -219,7 +222,6 @@ function Navbar() {
                 />
               </MenuButton>
 
-              {/* There is down sign but it has a problem, cant opacity 1 */}
               {/* <Box className={styles.downButton}>
                 <BsChevronDown />
               </Box> */}
