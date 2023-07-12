@@ -16,6 +16,8 @@ import AdminProducts from "./pages/Admin/AdminProducts";
 import AdminProductDetail from "./pages/Admin/AdminProductDetail";
 import NewProduct from "./pages/Admin/AdminProducts/NewProduct";
 import SigninToOrder from "./pages/Auth/Signin/indexToOrder";
+import Footer from "./components/Footer";
+import  "./App.css";
 
 
 function App() {
@@ -49,6 +51,7 @@ function App() {
           <Route path="*" element={<Error404 />} />
         </Routes>
       </div>
+      <Footer/>
     </Router>
   );
 }
