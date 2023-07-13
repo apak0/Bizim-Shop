@@ -23,6 +23,9 @@ import  "./App.css";
 function App() {
   return (
     <Router>
+      <div id="app" >
+
+      
       <Navbar />
 
       <div id="content">
@@ -52,6 +55,7 @@ function App() {
         </Routes>
       </div>
       <Footer/>
+    </div>
     </Router>
   );
 }
