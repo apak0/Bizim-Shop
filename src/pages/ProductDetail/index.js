@@ -22,38 +22,43 @@ function ProductDetail() {
   const images = data.photos.map((url) => ({ original: url }));
 
   return (
-    <Box margin={"2rem"} >
-    <motion.Box initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Box>
-
-     
-      <Box className="d-flex justify-center">
+    <Box margin={"2rem"}>
+      <motion.Box initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <Box>
-          <Text as="h2" fontSize="2xl">
-            {data.title}
-          </Text>
-        </Box>
-        <Box>
-          <Text>{moment(data.createdAt).format("DD/MM/YYYY")}</Text>
-        </Box>
-      </Box>
+          <Box className="d-flex justify-center">
+            <Box>
+              <Text as="h2" fontSize="2xl">
+                {data.title}
+              </Text>
+            </Box>
+            <Box>
+              <Text>{moment(data.createdAt).format("DD/MM/YYYY")}</Text>
+            </Box>
+          </Box>
 
-      <Box>
-        <p>{data.description}</p>
-      </Box>
-      <Box margin="10">
-        <ImageGallery  showFullscreenButton={false} showPlayButton={false} items={images} showThumbnails={false} />
-      </Box>
-      <Box className="mx-5" textAlign={"center"} mb={5}>
-        <Button
-          colorScheme={findBasketItem ? "green" : "pink"}
-          onClick={() => addToBasket(data, findBasketItem)}
-        >
-          {findBasketItem ? "Remove" : "Add to Basket"}
-        </Button>
-      </Box>
-       </Box>
-    </motion.Box>
+          <Box>
+            <p>{data.description}</p>
+          </Box>
+          <Box margin="10"
+          >
+            <ImageGallery
+              
+              showFullscreenButton={false}
+              showPlayButton={false}
+              items={images}
+              showThumbnails={false}
+            />
+          </Box>
+          <Box className="mx-5" textAlign={"center"} mb={5}>
+            <Button
+              colorScheme={findBasketItem ? "green" : "pink"}
+              onClick={() => addToBasket(data, findBasketItem)}
+            >
+              {findBasketItem ? "Remove" : "Add to Basket"}
+            </Button>
+          </Box>
+        </Box>
+      </motion.Box>
     </Box>
   );
 }
