@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import {
   Badge,
@@ -161,7 +161,7 @@ function Navbar() {
             </NavLink>
           </Box>
 
-          <Box display={""} as="button" to="/basket">
+          <Box display={""} as={Link} to="/basket"  >
             <Box
               _hover={{
                 color: "blue",
@@ -170,7 +170,7 @@ function Navbar() {
               alignItems={"center"}
             >
               {items.length < 1 ? (
-                <Box>
+                <Box  >
                   <SlBasket
                     style={{
                       color: "white",
