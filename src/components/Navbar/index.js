@@ -20,6 +20,7 @@ import { SlBasket, SlBasketLoaded } from "react-icons/sl";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useBasket } from "../../contexts/BasketContext";
+import image from "../../assets/Bizim-Logo.png"
 
 function Navbar() {
   const { user, logout } = useAuth();
@@ -40,17 +41,17 @@ function Navbar() {
   return (
     <Box className={styles.nav}>
       <Box display={"flex"} mr={"auto"} alignItems={"center"} className="">
-        <Box className="">
-          <NavLink to="/">
-            <Image
-              borderRadius="full"
-              height={"50px"}
-              minW={"88px"}
-              src="https://www.freepnglogos.com/uploads/eagle-png-logo/lakes-eagles-png-logo-14.png"
-              alt="Dan Abramov"
-            />
-          </NavLink>
-        </Box>
+      <Box>
+      <NavLink to="/">
+        <Image
+          borderRadius="full"
+          height={"50px"}
+          minW={"88px"}
+          src={image} // Replace this with your direct image URL
+          alt="Logo"
+        />
+      </NavLink>
+    </Box>
 
         <Box
           display={"flex"}
